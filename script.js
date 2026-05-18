@@ -16,5 +16,5 @@ function getHumanChoice() {
     return humanChoice;
 }
 
-let humanChoice = getHumanChoice();
-console.log(humanChoice);
+let playerScore = 0;
+let computerScore = 0;
