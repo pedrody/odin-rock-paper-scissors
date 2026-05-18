@@ -10,6 +10,11 @@ function getComputerChoice() {
     }
 }
 
-let computerChoice = getComputerChoice();
+function getHumanChoice() {
+    let humanChoice = prompt("Rock, paper or scissors? ");
 
-console.log(computerChoice);
+    return humanChoice;
+}
+
+let humanChoice = getHumanChoice();
+console.log(humanChoice);
