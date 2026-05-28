@@ -44,11 +44,22 @@ function playGame() {
     const choiceBtns = document.querySelectorAll("#rock, #paper, #scissors");
     let roundResultPara = document.querySelector("#round-result");
     let scorePara = document.querySelector("#score");
+    const POINTS_TO_WIN = 5;
+
+    roundResultPara.textContent = `The first to reach ${POINTS_TO_WIN} points wins!`;
 
     choiceBtns.forEach((btn) => btn.addEventListener("click", (e) => {
         playRound(e.target.id, getComputerChoice());
 
-        scorePara.textContent = `Your score: ${playerScore}  | Computer score: ${computerScore}`;
+        if (playerScore == POINTS_TO_WIN || computerScore == POINTS_TO_WIN) {
+            scorePara.textContent = (playerScore == POINTS_TO_WIN) ? "You won the game! 🎉" : "You lost the game ❌";
+            
+            playerScore = 0;
+            computerScore = 0;
+            
+        } else {
+            scorePara.textContent = `Your score: ${playerScore}  | Computer score: ${computerScore}`;
+        }
     }));
 }
 
