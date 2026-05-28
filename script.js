@@ -12,40 +12,43 @@ function getComputerChoice() {
 
 function playGame() {
     function playRound(humanChoice, computerChoice) {
-        let winAnnouncement;
+        let roundResult;
 
         if (humanChoice === "rock" && computerChoice === "paper") {
-            winAnnouncement = "You lose! Paper beats Rock";
+            roundResult = "You lose! Paper beats Rock";
             computerScore++;
         } else if (humanChoice === "rock" && computerChoice === "scissors") {
-            winAnnouncement = "You win! Rock beats Scissors";
+            roundResult = "You win! Rock beats Scissors";
             playerScore++;
         } else if (humanChoice === "paper" && computerChoice === "rock") {
-            winAnnouncement = "You win! Paper beats Rock";
+            roundResult = "You win! Paper beats Rock";
             playerScore++;
         } else if (humanChoice === "paper" && computerChoice === "scissors") {
-            winAnnouncement = "You lose! Scissors beats Paper";
+            roundResult = "You lose! Scissors beats Paper";
             computerScore++;
         } else if (humanChoice === "scissors" && computerChoice === "rock") {
-            winAnnouncement = "You lose! Rock beats Scissors";
+            roundResult = "You lose! Rock beats Scissors";
             computerScore++;
         } else if (humanChoice === "scissors" && computerChoice === "paper") {
-            winAnnouncement = "You win! Scissors beats Paper";
+            roundResult = "You win! Scissors beats Paper";
             playerScore++;
         } else {
-            winAnnouncement = "Draw!";
+            roundResult = "Draw!";
         }
 
-        console.log(winAnnouncement);
+        roundResultPara.textContent = roundResult;
     }
     
     let playerScore = 0;
     let computerScore = 0;
     const choiceBtns = document.querySelectorAll("#rock, #paper, #scissors");
+    let roundResultPara = document.querySelector("#round-result");
+    let scorePara = document.querySelector("#score");
 
     choiceBtns.forEach((btn) => btn.addEventListener("click", (e) => {
         playRound(e.target.id, getComputerChoice());
-        console.log(`Your score: ${playerScore}  | Computer score: ${computerScore}`);
+
+        scorePara.textContent = `Your score: ${playerScore}  | Computer score: ${computerScore}`;
     }));
 }
 
