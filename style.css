@@ -7,17 +7,37 @@ body {
     height: 100vh;
     margin: 0px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: aliceblue;
 }
 
+h1 {
+    font-size: 48px;
+}
+
+#options button {
+    font-size: 80px;
+    padding: 4px 16px;
+}
+
 #container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+}
+
+#card {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    width: 100%;
+    font-size: 30px;
     border: 2px solid black;
     border-radius: 8px;
     box-shadow: 1px 1px 4px #aaaaaa;
@@ -25,10 +45,29 @@ body {
     background-color: #fefefe;
 }
 
-button {
-    padding: 4px 16px;
-}
-
 #round-result {
     margin-top: 0px;
+}
+
+#scoreboard {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    width: 100%;
+}
+
+#options {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    margin-top: 50px;
+}
+
+#options button {
+    flex: 1;
+}
+
+#player-choice, #computer-choice {
+    font-size: 100px;
+    margin: 0px
 }

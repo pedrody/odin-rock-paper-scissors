@@ -40,13 +40,34 @@ function playGame() {
         playAgainBtn.style.display = "none";
         choiceBtns.forEach(btn => btn.style.display = "inline");
         roundResultPara.textContent = `The first to reach ${POINTS_TO_WIN} points wins!`;
-        scorePara.textContent = `Your score: ${playerScore}  | Computer score: ${computerScore}`;
+        playerChoicePara.textContent = "?";
+        computerChoicePara.textContent = "?";
+        playerScorePara.textContent = `You: ${playerScore}`;
+        computerScorePara.textContent = `Computer: ${computerScore}`;
     }
 
     function gameOver() {
-        scorePara.textContent = (playerScore == POINTS_TO_WIN) ? "You won the game! 🎉" : "You lost the game ❌";
+        roundResultPara.textContent = (playerScore == POINTS_TO_WIN) ? "You won the game! 🎉" : "You lost the game ❌";
         choiceBtns.forEach(btn => btn.style.display = "none");
         playAgainBtn.style.display = "inline";
+    }
+
+    function updateChoicesPara(playerChoice, computerChoice) {
+        if (playerChoice == "rock") {
+            playerChoicePara.textContent = "✊";
+        } else if (playerChoice == "paper") {
+            playerChoicePara.textContent = "🤚";
+        } else {
+            playerChoicePara.textContent = "✌️";
+        }
+
+        if (computerChoice == "rock") {
+            computerChoicePara.textContent = "✊";
+        } else if (computerChoice == "paper") {
+            computerChoicePara.textContent = "🤚";
+        } else {
+            computerChoicePara.textContent = "✌️";
+        }
     }
     
     let playerScore = 0;
@@ -54,19 +75,24 @@ function playGame() {
     const choiceBtns = document.querySelectorAll("#rock, #paper, #scissors");
     const playAgainBtn = document.querySelector("#play-again");
     let roundResultPara = document.querySelector("#round-result");
-    let scorePara = document.querySelector("#score");
+    let playerScorePara = document.querySelector("#player-score");
+    let computerScorePara = document.querySelector("#computer-score");
+    let playerChoicePara = document.querySelector("#player-choice");
+    let computerChoicePara = document.querySelector("#computer-choice");
     const POINTS_TO_WIN = 5;
 
     roundResultPara.textContent = `The first to reach ${POINTS_TO_WIN} points wins!`;
 
     choiceBtns.forEach((btn) => btn.addEventListener("click", (e) => {
-        playRound(e.target.id, getComputerChoice());
+        let computerChoice = getComputerChoice();
+        updateChoicesPara(e.target.id, computerChoice);
+        playRound(e.target.id, computerChoice);
+
+        playerScorePara.textContent = `You: ${playerScore}`;
+        computerScorePara.textContent = `Computer: ${computerScore}`;
 
         if (playerScore == POINTS_TO_WIN || computerScore == POINTS_TO_WIN) {
             gameOver();
-            
-        } else {
-            scorePara.textContent = `Your score: ${playerScore}  | Computer score: ${computerScore}`;
         }
     }));
 

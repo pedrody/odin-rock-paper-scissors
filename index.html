@@ -8,14 +8,24 @@
 </head>
 <body>
     <div id="container">
-        <div id="scoreboard">
+        <h1>ROCK PAPER SCISSORS</h1>
+        <div id="card">
             <p id="round-result"></p>
-            <p id="score">Your score: 0  | Computer score: 0</p>
+            <div id="scoreboard">
+                <div id="player">
+                    <p id="player-choice">?</p>
+                    <p id="player-score">You: 0</p>
+                </div>
+                <div class="computer">
+                    <p id="computer-choice">?</p>
+                    <p id="computer-score">Computer: 0</p>
+                </div>
+            </div>
         </div>
         <div id="options">
-            <button id="rock">Rock</button>
-            <button id="paper">Paper</button>
-            <button id="scissors">Scissors</button>
+            <button id="rock">✊</button>
+            <button id="paper">🤚</button>
+            <button id="scissors">✌️</button>
             <button id="play-again" style="display: none">Play again</button>
         </div>
     </div>
