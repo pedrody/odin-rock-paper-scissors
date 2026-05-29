@@ -1,13 +1,7 @@
-function getComputerChoice() {
-    let randNum = Math.random() * 9;
+function getComputerChoice() {    
+    const CHOICES = ["rock", "paper", "scissors"];
 
-    if (randNum > 0 && randNum <= 3) {
-        return "rock";
-    } else if (randNum > 3 && randNum <= 6) {
-        return "paper"
-    } else {
-        return "scissors"
-    }
+    return CHOICES[Math.floor(Math.random() * 3)];
 }
 
 function playGame() {
